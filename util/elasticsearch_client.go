@@ -1,13 +1,21 @@
 package util
 
 import (
+	"log"
+	"os"
+
 	"github.com/elastic/go-elasticsearch/v7"
 	"github.com/elastic/go-elasticsearch/v7/esapi"
-	"log"
 )
 
 func ElasticSearchClient() (*elasticsearch.Client, *esapi.Response) {
-	esClient, err := elasticsearch.NewDefaultClient()
+	cfg := elasticsearch.Config{
+		Addresses: []string{
+			os.Getenv("ELASTIC_SEARCH_URI"),
+		},
+	}
+
+	esClient, err := elasticsearch.NewClient(cfg)
 	if err != nil {
 		log.Fatalf("Error creating the client: %s", err)
 	}

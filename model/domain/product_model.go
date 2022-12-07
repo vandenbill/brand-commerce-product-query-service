@@ -3,6 +3,7 @@ package domain
 import (
 	"context"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/rabbitmq/amqp091-go"
 )
 
@@ -17,4 +18,8 @@ type ProductUsecase interface {
 	CreateProductUsecase(data map[string]interface{}, jaegerCtx context.Context)
 	UpdateProductUsecase(data map[string]interface{}, jaegerCtx context.Context)
 	DeleteProductUsecase(data map[string]interface{}, jaegerCtx context.Context)
+}
+
+type ProductDelivery interface {
+	SearchProductDelivery(c *fiber.Ctx) error
 }

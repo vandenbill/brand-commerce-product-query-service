@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/vandenbill/brand-commerce-product-query-service/repository/elasticsearch"
 	"github.com/vandenbill/brand-commerce-product-query-service/usecase"
@@ -18,10 +20,10 @@ func main() {
 	closer := util.ConfigureJaeger()
 	defer closer.Close()
 
-	conn := util.DialRabbitMQ()
-	defer conn.Close()
+	rabbitMQConn := util.DialRabbitMQ()
+	defer rabbitMQConn.Close()
 
-	ch, err := conn.Channel()
+	ch, err := rabbitMQConn.Channel()
 	util.FailOnError(err, "Failed to open a channel")
 	defer ch.Close()
 
@@ -40,5 +42,6 @@ func main() {
 		productUsecase.MonitorData(ch, q)
 	}()
 
-	app.Listen(":3000")
+	log.Println("APP WORK")
+	log.Fatal(app.Listen(":3000"))
 }

@@ -3,19 +3,17 @@ module github.com/vandenbill/brand-commerce-product-query-service
 go 1.19
 
 require (
+	github.com/elastic/go-elasticsearch/v7 v7.17.7
 	github.com/gofiber/fiber/v2 v2.40.1
+	github.com/gomodule/redigo v1.8.9
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/rabbitmq/amqp091-go v1.5.0
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
-	go.mongodb.org/mongo-driver v1.11.0
 )
 
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/elastic/go-elasticsearch v0.0.0 // indirect
-	github.com/elastic/go-elasticsearch/v7 v7.17.7 // indirect
-	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
